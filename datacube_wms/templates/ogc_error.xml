@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<ServiceExceptionReport version="{{ version }}"
+xmlns="http://www.opengis.net/ogc"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.opengis.net/ogc {{ schema_url }}">
+  {% for err in exception.errors %}
+    <ServiceException{% if err.code %} code="{{ err.code }}"{% endif %}{% if err.locator %} locator="{{ err.locator }}"{% endif %}>{{ err.msg }}</ServiceException>
+  {% endfor %}
+  {% if traceback %}
+    <ServiceException>
+        {% for t in traceback %}
+        <![CDATA[ {{ t|safe }} ]]>
+        {% endfor %}
+    </ServiceException>
+  {% endif %}
+</ServiceExceptionReport>

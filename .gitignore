@@ -60,3 +60,12 @@ target/
 
 # pyenv python configuration file
 .python-version
+
+# Editor temp files
+.*.swp
+
+# PyCharm project files
+.idea/
+
+wsgi_local.py
+wms_cfg_local.py
